@@ -1,0 +1,16 @@
+{
+  "name": "node-mock-server-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock": "node mock"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-mock-server": "^0.25.4"
+  }
+}
