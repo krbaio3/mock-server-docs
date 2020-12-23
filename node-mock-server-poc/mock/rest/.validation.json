@@ -1,1 +1,47 @@
-{}
+{
+    "messages": [
+        {
+            "type": "neutral",
+            "msg": "response validation's started",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/hello/#{param}/GET/mock/empty</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/hello/#{param}/GET/mock/success</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/signature/#/POST/mock/empty</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/signature/#/POST/mock/success</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/signature/#validate/GET/mock/empty</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        },
+        {
+            "type": "success",
+            "msg": "Mock data in file <code>/signature/#validate/GET/mock/success</code> are valid!",
+            "dateTime": "2020-12-23 11:44:36 GMT+0000",
+            "time": "11:44:36"
+        }
+    ],
+    "dateTime": "2020-12-23 11:44:36 GMT+0000"
+}

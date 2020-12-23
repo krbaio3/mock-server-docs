@@ -1,0 +1,14 @@
+{
+  "desc": "status - Validar Firma Documentos",
+  "desc2": "EndPoint para validar firma documentos",
+  "security": [],
+  "protected": false,
+  "status": "swagger-imported",
+  "request": {},
+  "response": {
+    "statusCode": "200",
+    "schema": {
+      "type": ""
+    }
+  }
+}

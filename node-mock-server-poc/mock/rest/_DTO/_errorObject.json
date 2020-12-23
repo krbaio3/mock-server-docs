@@ -1,0 +1,9 @@
+{
+  "id": "$ref-_id",
+  "status": "number",
+  "title": "string",
+  "detail": "string",
+  "source": {
+    "pointer": "string"
+  }
+}

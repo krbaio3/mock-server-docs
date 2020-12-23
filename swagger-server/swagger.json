@@ -1,0 +1,358 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API para Firmar Documentos y Validar Firma",
+    "version": "1.0",
+    "title": "Firma"
+  },
+  "basePath": "/v1",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json;charset=UTF-8"
+  ],
+  "consumes": [
+    "application/json;charset=UTF-8"
+  ],
+  "tags": [
+    {
+      "name": "Signature",
+      "description": "Endpoints disponibles firmar documentos"
+    }
+  ],
+  "paths": {
+    "/signature": {
+      "post": {
+        "deprecated": false,
+        "summary": "status - Firmar Documentos",
+        "tags": [
+          "Signature"
+        ],
+        "description": "EndPoint para firmar documentos",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Request-ID",
+            "required": true,
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "description": "Identificador único de la operación asignada por el TPP."
+          },
+          {
+            "in": "header",
+            "name": "PSU-ID",
+            "type": "string",
+            "description": "Identificador único del PSU."
+          },
+          {
+            "in": "header",
+            "name": "PSU-CORPORATE-ID",
+            "type": "string",
+            "description": "Identificador único del PSU-CORPORATE."
+          },
+          {
+            "in": "header",
+            "name": "TPP-Redirect-URI",
+            "type": "string",
+            "pattern": "^.{1,250}$",
+            "description": "URI del TPP donde el flujo de la transacción debe ser redirigido después de alguna de las fases del SCA."
+          },
+          {
+            "in": "body",
+            "name": "requestData",
+            "description": "Body de la petición que hay que firmar",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Proceso de Firma realizado con éxito",
+            "headers": {
+              "Digest": {
+                "type": "string",
+                "description": "Cabecera Digest",
+                "pattern": "SHA-256=.*[A-Z][a-z]\\W*"
+              },
+              "Signature": {
+                "type": "string",
+                "description": "Cabecera de tipo multivalor"
+              },
+              "TPP-Signature-Certificate": {
+                "type": "string",
+                "description": "contiene el certificado que hemos utilizado en Base64",
+                "format": "byte",
+                "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "attributes",
+                    "type",
+                    "id"
+                  ],
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "required": [
+                        "ok"
+                      ],
+                      "properties": {
+                        "ok": {
+                          "type": "boolean",
+                          "description": "booleano a true que indica que ha ido bien el proceso de firma",
+                          "example": true,
+                          "default": true
+                        },
+                        "requestId": {
+                          "type": "number",
+                          "description": "identificador único de operación",
+                          "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                          "example": "9179d197-550b-469d-ad2f-385284ccecff"
+                        }
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "tipo de operación realizada",
+                      "example": "oauth"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "identificador único de operación",
+                      "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                      "example": "9179d197-550b-469d-ad2f-385284ccecff"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error al firmar el documento",
+            "schema": {
+              "$ref": "#/definitions/ResponseRejected"
+            }
+          }
+        }
+      }
+    },
+    "/signature/validate": {
+      "get": {
+        "deprecated": false,
+        "summary": "status - Validar Firma Documentos",
+        "tags": [
+          "Signature"
+        ],
+        "description": "EndPoint para validar firma documentos",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Request-ID",
+            "required": true,
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "description": "Identificador único de la operación asignada por el TPP."
+          },
+          {
+            "in": "header",
+            "name": "Signature",
+            "type": "string",
+            "description": "Firma de la petición."
+          },
+          {
+            "in": "header",
+            "name": "Digest",
+            "type": "string",
+            "description": "Body de la petición firmada, codificado con algoritmo SHA256 y codificado a Base64.",
+            "format": "byte",
+            "pattern": "^.{1,100}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Redirección de Autorización Enviada",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "attributes",
+                    "type",
+                    "id"
+                  ],
+                  "properties": {
+                    "attributes": {
+                      "type": "object",
+                      "required": [
+                        "ok"
+                      ],
+                      "properties": {
+                        "ok": {
+                          "type": "boolean",
+                          "description": "booleano a true que indica que ha ido bien el proceso de firma",
+                          "example": true,
+                          "default": true
+                        },
+                        "requestId": {
+                          "type": "number",
+                          "description": "identificador único de operación",
+                          "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                          "example": "9179d197-550b-469d-ad2f-385284ccecff"
+                        }
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "tipo de operación realizada",
+                      "example": "oauth"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "description": "identificador único de operación",
+              "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+              "example": "9179d197-550b-469d-ad2f-385284ccecff"
+            }
+          },
+          "400": {
+            "description": "Error al firmar el documento",
+            "schema": {
+              "$ref": "#/definitions/ResponseRejected"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RequestBodySignature": {
+      "type": "object",
+      "properties": {}
+    },
+    "ResponseSuccessfully": {
+      "type": "object",
+      "required": [
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "required": [
+            "attributes",
+            "type",
+            "id"
+          ],
+          "properties": {
+            "attributes": {
+              "type": "object",
+              "required": [
+                "ok"
+              ],
+              "properties": {
+                "ok": {
+                  "type": "boolean",
+                  "description": "booleano a true que indica que ha ido bien el proceso de firma",
+                  "example": true,
+                  "default": true
+                },
+                "requestId": {
+                  "type": "number",
+                  "description": "identificador único de operación",
+                  "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                  "example": "9179d197-550b-469d-ad2f-385284ccecff"
+                }
+              }
+            },
+            "type": {
+              "type": "string",
+              "description": "tipo de operación realizada",
+              "example": "oauth"
+            },
+            "id": {
+              "type": "string",
+              "description": "identificador único de operación",
+              "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+              "example": "9179d197-550b-469d-ad2f-385284ccecff"
+            }
+          }
+        }
+      }
+    },
+    "ResponseRejected": {
+      "type": "object",
+      "required": [
+        "errors"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "status",
+              "code",
+              "title",
+              "detail"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "identificador único de operación",
+                "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "example": "9179d197-550b-469d-ad2f-385284ccecff"
+              },
+              "status": {
+                "type": "number",
+                "description": "status code",
+                "pattern": "ˆ\\d{3}$",
+                "example": 400
+              },
+              "title": {
+                "type": "string",
+                "description": "Título descriptivo del Error",
+                "pattern": "^.{1,50}$",
+                "example": "Error"
+              },
+              "detail": {
+                "type": "string",
+                "description": "Detalle del Error",
+                "pattern": "^.{1,250}$",
+                "example": "Ha fallado al hacer la encriptación"
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "pointer": {
+                    "type": "string",
+                    "description": "URL que ha dado el fallo",
+                    "pattern": "ˆ\\/.{3,20}$",
+                    "example": "/signature"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

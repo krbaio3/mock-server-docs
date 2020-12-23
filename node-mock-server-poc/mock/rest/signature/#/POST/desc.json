@@ -1,0 +1,28 @@
+{
+  "desc": "status - Firmar Documentos",
+  "desc2": "EndPoint para firmar documentos",
+  "security": [],
+  "protected": false,
+  "status": "swagger-imported",
+  "request": {
+    "body": {
+      "parameters": [
+        {
+          "name": "requestData",
+          "type": "",
+          "desc": "Body de la petición que hay que firmar",
+          "schemaType": " "
+        }
+      ]
+    },
+    "schema": {
+      "type": " "
+    }
+  },
+  "response": {
+    "statusCode": "200",
+    "schema": {
+      "type": ""
+    }
+  }
+}

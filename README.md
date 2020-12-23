@@ -149,3 +149,80 @@ Descontinuado: [wiremock-js](https://github.com/stratouklos/wiremock-js)
 [wiremock](https://github.com/tomasbjerre/wiremock-npm)
 
 Wrapper de wiremock para nodejs. Ocupa 13,5Mb. Usa node-jre
+
+
+## Projecto swagger-server
+
+Para levantar los swagger, se usa un mini-servidor express.
+
+```js
+const express = require('express');
+const app = express();
+const swaggerDocument = require('./swagger.json');
+
+app.get('/swagger.json', (request, response) => {
+    const event = new Date(Date.now());
+    console.log('Envío de swagger ', event.toLocaleTimeString('es-ES'));
+    response.json(
+        swaggerDocument
+    );
+});
+
+app.listen({
+    port: 4444,
+},() => console.info('Ejecutando Swagger en "/swagger.json" puerto: 4444'));
+```
+
+Es muy simple.
+
+### Others things
+
+Pruebas
+
+- [issue](https://stackoverflow.com/questions/34733253/converting-a-swagger-yaml-file-to-json-from-the-command-line)
+
+#### Download current stable 2.x.x branch (Swagger and OpenAPI version 2)
+
+```
+wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.17/swagger-codegen-cli-2.4.17.jar -O swagger-codegen-cli.jar
+
+java -jar swagger-codegen-cli.jar help
+
+swagger-codegen generate -i swagger.yaml -l swagger
+```
+
+Fuera
+
+-----
+
+Copiar el swagger.yaml de ejemplo y ponerlo [aqui](https://editor.swagger.io/). Pasarlo a JSON y guardarlo en [swagger-server](#projecto-swagger-server) como `swagger.json`. Parece ser, que `node-mock-server` no se lleva bien con el `$ref`. Dejarlo sin ello
+
+ejecutamos `npm start`
+
+Volvemos al proyecto [node-mock-server-poc](#node-mock-server-poc)
+
+Configuramos en el `index.js` la parte de swagger
+
+```js
+'swaggerImport': {
+    'protocol': 'http',
+    'host': 'localhost',
+    'port': '4444',
+    'path': '/swagger.json', // endpoint que sirve el swagger
+    'replacePathsStr': '',
+    'createErrorFile': true,
+    'createEmptyFile': true,
+    'overwriteExistingDescriptions': true,
+    'responseFuncPath': path.join(__dirname, 'func-imported'),
+    'dest': path.join(__dirname, '/rest')
+    },
+```
+
+Importamos el swagger desde la interfaz gráfica.
+
+Una vez importado el swagger, pasamos el Validate All Mocks Response
+
+En el botón de DTO's, vemos que se nos han generado los objetos que teníamos en los swagger. Al pulsar sobre ellos, nos da la opción de generar el código que queramos seleccionando unos checkBox
+
+Están vacías las respuestas y los errores
+Abrir issue a node-mock-server
