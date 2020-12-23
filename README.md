@@ -23,7 +23,7 @@ Sigue el API de [Blue Print](https://apiblueprint.org/)
 
 ## node-mock-server-poc
 
-(node-mock-server)[https://github.com/smollweide/node-mock-server]
+[node-mock-server](https://github.com/smollweide/node-mock-server)
 
 Características:
 
