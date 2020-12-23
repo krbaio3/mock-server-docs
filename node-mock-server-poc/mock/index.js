@@ -21,9 +21,9 @@ mockServer({
 	'funcPath': path.join(__dirname, '/func'),
 	'swaggerImport': {
 		'protocol': 'http',
-		'host': 'petstore.swagger.io',
-		'port': '80',
-		'path': '/v2/swagger.json',
+		'host': 'localhost',
+		'port': '4444',
+		'path': '/api-docs',
 		'replacePathsStr': '',
 		'createErrorFile': true,
 		'createEmptyFile': true,

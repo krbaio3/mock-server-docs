@@ -2,13 +2,13 @@
 
 ## Nock
 
-https://github.com/nock/nock
+[Nock](https://github.com/nock/nock)
 
 Es más para testing. Intercepta llamadas y devuelve la respuesta que queramos
 
 ## Pretender
 
-https://github.com/pretenderjs/pretender
+[Pretender](https://github.com/pretenderjs/pretender)
 
 Sólo funciona en el navegador
 
@@ -17,13 +17,33 @@ Sólo funciona en el navegador
 
 [mocks-server](https://github.com/mocks-server/main)
 
+mocks-server-poc:
+
+Va con plugins
+
 ## Drakov
+
+[Drakov](https://github.com/Aconex/drakov)
 
 Sigue el API de [Blue Print](https://apiblueprint.org/)
 
 ## node-mock-server-poc
 
 [node-mock-server](https://github.com/smollweide/node-mock-server)
+
+instalación:
+
+```bash
+$ npm install node-mock-server --save-dev
+Done!
+```
+
+inicialización:
+
+```bash
+$ node node_modules/node-mock-server/init
+Done!
+```
 
 Características:
 
@@ -106,17 +126,26 @@ node node_modules/node-mock-server/init
 ➜ Wrote file "mock/index.js"
 ```
 
+```txt
+Run `node mock swagger-import` for importing schemas!
+Run `node mock` for starting the server!
+```
+
 File => mock/index.js
 
-Invertigar.
+ver cómo funciona con swagger
 
 Solo en JS ( JS + Flow)
 
 
 ## wiremock npm
 
-https://github.com/tomakehurst/wiremock/issues/514
+Revisar esta [issue](https://github.com/tomakehurst/wiremock/issues/514)
 
 Hay dos wrapper, uno parece descontinuado, y otro activo.
 
-Wrapper de wiremock para nodejs. Ocupa 13,5Mb.
+Descontinuado: [wiremock-js](https://github.com/stratouklos/wiremock-js)
+
+[wiremock](https://github.com/tomasbjerre/wiremock-npm)
+
+Wrapper de wiremock para nodejs. Ocupa 13,5Mb. Usa node-jre

@@ -1,17 +1,17 @@
 {
-  "name": "node-mock-server-poc",
+  "name": "server-swagger",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mock": "node mock",
-    "swagger": "node mock swagger-import"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "node-mock-server": "^0.25.4"
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.6"
   }
 }
