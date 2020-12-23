@@ -29,6 +29,9 @@
     },
     "success-207": {
       "counter": 1
+    },
+    "faker.json": {
+      "counter": 6
     }
   }
 }

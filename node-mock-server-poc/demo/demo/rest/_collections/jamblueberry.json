@@ -1,0 +1,7 @@
+{
+  "name": "jamblueberry",
+  "description": "",
+  "selectedResponses": {
+    "products/#{productCode}/GET": "error.json"
+  }
+}

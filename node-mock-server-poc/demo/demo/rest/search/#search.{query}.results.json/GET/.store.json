@@ -2,6 +2,9 @@
   "validation": {
     "success": {
       "counter": 1
+    },
+    "success.json": {
+      "counter": 1
     }
   }
 }
