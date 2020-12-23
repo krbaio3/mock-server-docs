@@ -1,3 +1,49 @@
 {
-  "data": {}
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "attributes",
+        "type",
+        "id"
+      ],
+      "properties": {
+        "attributes": {
+          "type": "object",
+          "required": [
+            "ok"
+          ],
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "description": "booleano a true que indica que ha ido bien el proceso de firma",
+              "example": true,
+              "default": true
+            },
+            "requestId": {
+              "type": "number",
+              "description": "identificador único de operación",
+              "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+              "example": "9179d197-550b-469d-ad2f-385284ccecff"
+            }
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "tipo de operación realizada",
+          "example": "oauth"
+        },
+        "id": {
+          "type": "string",
+          "description": "identificador único de operación",
+          "pattern": "ˆ[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+          "example": "9179d197-550b-469d-ad2f-385284ccecff"
+        }
+      }
+    }
+  }
 }

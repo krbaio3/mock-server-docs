@@ -20,7 +20,7 @@ mockServer({
 		'protocol': 'http',
 		'host': 'localhost',
 		'port': '4444',
-		'path': '/swagger.json',
+		'path': '/swagger.json', // endpoint que sirve el swagger
 		'replacePathsStr': '',
 		'createErrorFile': true,
 		'createEmptyFile': true,

@@ -225,4 +225,4 @@ Una vez importado el swagger, pasamos el Validate All Mocks Response
 En el botón de DTO's, vemos que se nos han generado los objetos que teníamos en los swagger. Al pulsar sobre ellos, nos da la opción de generar el código que queramos seleccionando unos checkBox
 
 Están vacías las respuestas y los errores
-Abrir issue a node-mock-server
+Abrir issue a node-mock-server.

@@ -10,13 +10,9 @@
         {
           "name": "requestData",
           "type": "",
-          "desc": "Body de la petición que hay que firmar",
-          "schemaType": " "
+          "desc": "Body de la petición que hay que firmar"
         }
       ]
-    },
-    "schema": {
-      "type": " "
     }
   },
   "response": {

@@ -46,7 +46,7 @@ module.exports = {
         loopArr.push('importedResponseRejected');
 
 		return JSON.stringify({
-  "errors": _getRes('_errorArray', loopArr)
+  "errors": _getArray(function () {return {  "id": faker.lorem.word(),  "status": faker.random.number(),  "title": faker.name.prefix(),  "detail": faker.lorem.word(),  "source": {}};})
 }, null, 2);
 	}
 
