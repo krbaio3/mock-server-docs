@@ -31,6 +31,20 @@ Sigue el API de [Blue Print](https://apiblueprint.org/)
 
 [node-mock-server](https://github.com/smollweide/node-mock-server)
 
+instalación:
+
+```bash
+$ npm install node-mock-server --save-dev
+Done!
+```
+
+inicialización:
+
+```bash
+$ node node_modules/node-mock-server/init
+Done!
+```
+
 Características:
 
 - Node 6
@@ -110,6 +124,11 @@ node node_modules/node-mock-server/init
 ? Enter request header value 
 ? Do you want to add a tunnel request header? No
 ➜ Wrote file "mock/index.js"
+```
+
+```txt
+Run `node mock swagger-import` for importing schemas!
+Run `node mock` for starting the server!
 ```
 
 File => mock/index.js
