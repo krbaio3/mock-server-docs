@@ -2,7 +2,7 @@
   "errors": [
     {
       "id": "string",
-      "status": "number",
+      "status": 155,
       "title": "string",
       "detail": "string",
       "source": {

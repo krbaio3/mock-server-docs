@@ -1,0 +1,10 @@
+{
+  "data": {
+    "attributes": {
+      "oauth2URL": "string",
+      "requestId": "number"
+    },
+    "type": "string",
+    "id": "string"
+  }
+}

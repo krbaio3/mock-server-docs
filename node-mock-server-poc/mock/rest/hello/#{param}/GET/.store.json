@@ -4,6 +4,21 @@
       "counter": 0
     },
     "success": {
+      "counter": 58
+    },
+    "success.json": {
+      "counter": 0
+    },
+    "request-data.json": {
+      "counter": 0
+    },
+    "request-data": {
+      "counter": 1
+    },
+    "response-data.json": {
+      "counter": 0
+    },
+    "response-data": {
       "counter": 0
     }
   }

@@ -1,1 +1,8 @@
-{}
+{
+  "title": "success",
+  "hello": "<%=params.param%>",
+  "prueba": <%-prueba(headers);%>,
+  "email": "<%-faker.internet.email();%>",
+  "cards": [<%-JSON.stringify(faker.helpers.createCard());%>
+  ]
+}

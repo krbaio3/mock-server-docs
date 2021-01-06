@@ -1,0 +1,39 @@
+{
+  "desc": "URL para redireccionar el navegador del PSU para que realice la siguiente petición al HUB de RedSys",
+  "desc2": "Obtener Token de Refresco",
+  "security": [],
+  "protected": false,
+  "status": "swagger-imported",
+  "request": {
+    "uri": {
+      "parameters": [
+        {
+          "name": "aspsp",
+          "required": true,
+          "type": "string",
+          "desc": "Nombre del ASPSP al que desea realizar la petición"
+        }
+      ]
+    },
+    "body": {
+      "parameters": [
+        {
+          "name": "refresh_token",
+          "required": true,
+          "type": "string",
+          "desc": "token de refresco",
+          "schemaType": "application/json"
+        }
+      ]
+    },
+    "schema": {
+      "type": "application/json"
+    }
+  },
+  "response": {
+    "statusCode": 200,
+    "schema": {
+      "type": "application/json"
+    }
+  }
+}

@@ -13,5 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "node-mock-server": "^0.25.4"
+  },
+  "dependencies": {
+    "faker": "^5.1.0"
   }
 }

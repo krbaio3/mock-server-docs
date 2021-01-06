@@ -1,0 +1,10 @@
+{
+  "data": {
+    "attributes": {
+      "oauth2URL": "<%=faker.internet.url()%>/cb?code=<%=faker.random.alphaNumeric(22)%>&state=<%=faker.random.alphaNumeric(3)%>",
+      "requestId": "<%=faker.random.uuid();%>"
+    },
+    "type": "auth",
+    "id": "<%=faker.random.uuid();%>"
+  }
+}

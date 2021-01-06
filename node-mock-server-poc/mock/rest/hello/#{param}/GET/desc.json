@@ -2,9 +2,24 @@
   "desc": "Hello + param=name",
   "security": [],
   "protected": false,
-  "status": "",
+  "status": "200",
+  "request": {
+    "uri": {
+      "parameters": [
+        {
+          "name": "param",
+          "required": true,
+          "type": "string",
+          "desc": "Nombre que saluda"
+        }
+      ]
+    },
+    "schema": {
+      "type": "application/json"
+    }
+  },
   "response": {
-    "statusCode": 200,
+    "statusCode": "200",
     "schema": {
       "type": "application/json"
     }

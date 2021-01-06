@@ -1,0 +1,56 @@
+{
+  "desc": "Generar URL de Autorización",
+  "desc2": "Generación de URL para redireccionar el navegador del PSU para que realice la siguiente petición al HUB",
+  "security": [],
+  "protected": false,
+  "status": "swagger-imported",
+  "request": {
+    "query": {
+      "parameters": [
+        {
+          "name": "state",
+          "required": true,
+          "type": "string",
+          "desc": "Valor opaco generado por el TPP. Usado para prevenir ataques “cross-site request forgery” XSRF."
+        },
+        {
+          "name": "redirect_uri",
+          "required": true,
+          "type": "string",
+          "desc": "URL de vuelta al HUB donde se informará el código de autorización “code” que será utilizado posteriormente para la obtención del token de acceso."
+        },
+        {
+          "name": "code_challenge",
+          "required": true,
+          "type": "string",
+          "desc": "Reto PKCE usado para prevenir ataques de inyección de código."
+        },
+        {
+          "name": "code_challenge_method",
+          "required": false,
+          "type": "string",
+          "desc": "Método para verificar el código que puede ser “plain” o “S256”. Si no se indica nada, se toma \"S256\" por defecto."
+        }
+      ]
+    },
+    "uri": {
+      "parameters": [
+        {
+          "name": "aspsp",
+          "required": true,
+          "type": "string",
+          "desc": "Nombre del ASPSP al que desea realizar la petición"
+        }
+      ]
+    },
+    "schema": {
+      "type": "application/json"
+    }
+  },
+  "response": {
+    "statusCode": "200",
+    "schema": {
+      "type": "application/json"
+    }
+  }
+}

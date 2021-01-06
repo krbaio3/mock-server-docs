@@ -1,0 +1,17 @@
+{
+  "detail": "<%=faker.lorem.sentence()%>",
+  "url": "<%=faker.internet.url()%>",
+  "oauth2URL": "<%=faker.internet.url()%>/cb?code=<%=faker.random.alphaNumeric(22)%>&state=<%=faker.random.alphaNumeric(3)%>",
+  "faker": "<%=faker.random.alphaNumeric(3)%>",
+  "require": "<%=require%>",
+  "dirname": "<%=__dirname%>",
+  "id": "<%=faker.random.uuid();%>",
+  "hello": "<%=params.param%>",
+  "email": "<%-faker.internet.email();%>",
+  "body": "<%-JSON.stringify(body);%>",
+  "query": "<%-JSON.stringify(query);%>",
+  "param": "<%-JSON.stringify(params);%>",
+  "cards": [<%-JSON.stringify(faker.helpers.createCard());%>
+  ],
+  "prueba": <%-prueba(headers);%>
+}

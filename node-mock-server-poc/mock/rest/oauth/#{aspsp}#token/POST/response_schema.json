@@ -1,0 +1,13 @@
+{
+  "data": {
+    "attributes": {
+      "access_token": "string",
+      "token_type": "response_schema.json",
+      "refresh_token": "string",
+      "requestId": "string",
+      "expires_in": "number"
+    },
+    "type": "string",
+    "id": "string"
+  }
+}
