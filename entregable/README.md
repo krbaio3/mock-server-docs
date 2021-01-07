@@ -230,6 +230,8 @@ mockServer({
 });
 ```
 
+Para ver más opciones, ver en [Middleware](#middleware)
+
 Desde la ventana del navegador que se ha abierto, seleccionamos desde la
 interfaz gráfica la opción de UI Importar swagger.
 
@@ -366,9 +368,10 @@ respuesta que nuestro mock-server usará.
 - Responses: para error 500, crear `error.json`, para error 401,
   `error-401.json` Si un parámetro está mal informado.
 
-  > For an error response the default HTTP status code is 500, but you can
-  > specify a different status code by suffixing the name of your error response
-  > with the appropriate status code, like `error-423.json`.
+  > Para una respuesta de error, el código de estado HTTP predeterminado es 500,
+  > pero puede especificar un código de estado diferente agregando como sufijo
+  > el nombre de su respuesta de error el código de estado apropiado, como
+  > error-423.json.
 
 - Se puede solicitar enviar un `json` de respuesta específica, indicándo en los
   `headers` (key: `_expected`, value: json_de_respuesta)
@@ -439,105 +442,143 @@ separado para no "ensuciar" este documento.
 
 Métodos que tiene `requestOptions`
 
-| attribute   | type   | description                                                                                   |
-| ----------- | ------ | --------------------------------------------------------------------------------------------- |
-| req         | Object | The (request object)[http://expressjs.com/en/api.html#req].                                   |
-| res         | Object | The (response object)[http://expressjs.com/en/api.html#res].                                  |
-| method      | string | Contains a string corresponding to the HTTP method of the request: GET, POST, PUT, and so on. |
-| dir         | string | The directory of selected response                                                            |
-| preferences | Object | The preferences object                                                                        |
+| atributo    | tipo   | descripción                                                                              |
+| ----------- | ------ | ---------------------------------------------------------------------------------------- |
+| req         | Objeto | El (objeto de solicitud) [http://expressjs.com/en/api.html#req].                         |
+| res         | Objeto | El (objeto de respuesta) [http://expressjs.com/en/api.html#res].                         |
+| method      | cadena | Contiene una cadena correspondiente al método HTTP de la solicitud: GET, POST, PUT, etc. |
+| dir         | cadena | El directorio de la respuesta seleccionada                                               |
+| preferences | Objeto | El objeto de preferencias                                                                |
 
-Métodos que tiene `serverOptions`
+Métodos que tiene `serverOptions` (opciones que tiene el [index.js](#indexjs))
 
-**options.restPath** Type: String Default value: './rest'
+**options.restPath**:
 
-A string value that defines the path to the rest API folder.
+Type: String
 
-**options.dirName** Type: String
+Default value: './rest'
+
+Un valor de cadena que define la ruta a la carpeta del resto de la API.
+
+**options.dirName**:
+
+Type: String
 
 A string value that defines the root directory (\_\_dirname).
 
-**options.title** Type: String Default value: Api mock server
+**options.title**:
+
+Type: String Default value: Api mock server
 
 A string value that defines the title.
 
-**options.version** Type: Number Default value: 1
+**options.version**:
+
+Type: Number Default value: 1
 
 A number value that defines the Rest API version.
 
-**options.urlBase** Type: String Default value: http://localhost:3001
+**options.urlBase**:
+
+Type: String Default value: http://localhost:3001
 
 A string value that defines the mock Rest API url.
 
-**options.urlPath** Type: String Default value: /rest/v1
+**options.urlPath**:
+
+Type: String Default value: /rest/v1
 
 A string value that defines the path for the mock Rest API.
 
-**options.port** Type: Number Default value: 3001
+**options.port**:
+
+Type: Number Default value: 3001
 
 A number value that defines the application port.
 
-**options.uiPath** Type: string Default value: /
+**options.uiPath**:
+
+Type: string Default value: /
 
 A string value that defines the path for the node-mock-server UI.
 
-**options.privateKey** Type: String
+**options.privateKey**:
+
+Type: String
 
 A string value that defines the path to the private key for ssl.
 
-**options.certificate** Type: String
+**options.certificate**:
+
+Type: String
 
 A string value that defines the path to the ssl certificate.
 
-**options.funcPath** Type: String|Array Optional
+**options.funcPath**:
+
+Type: String|Array Optional
 
 A string or array that define the location of the response functions.
 
-**options.headers** Type: Object Default value: {}
+**options.headers**:
+
+Type: Object Default value: {}
 
 A object that define the global response headers. Will add the given headers to
 all responses.
 
-**options.contentType** Type: String Default value: application/json
+**options.contentType**:
+
+Type: String Default value: application/json
 
 A string that define the header "Content-Type".
 
-**options.accessControlExposeHeaders** Type: String or function Default value:
-X-Total-Count
+**options.accessControlExposeHeaders**:
+
+Type: String or function Default value: X-Total-Count
 
 A string that define the header "Access-Control-Expose-Headers". If a function
 is used, it will be called with the request object as the only parameter.
 
-**options.accessControlAllowOrigin** Type: String or function Default value: \*
+**options.accessControlAllowOrigin**:
+
+Type: String or function Default value: \*
 
 A string that define the header "Access-Control-Allow-Origin". If a function is
 used, it will be called with the request object as the only parameter.
 
-**options.accessControlAllowMethods** Type: String or function Default value:
-GET, POST, PUT, OPTIONS, DELETE, PATCH, HEAD
+**options.accessControlAllowMethods**:
+
+Type: String or function Default value: GET, POST, PUT, OPTIONS, DELETE, PATCH,
+HEAD
 
 A string that define the header "Access-Control-Allow-Methods". If a function is
 used, it will be called with the request object as the only parameter.
 
-**options.accessControlAllowHeaders** Type: String or function Default value:
-origin, x-requested-with, content-type
+**options.accessControlAllowHeaders**:
+
+Type: String or function Default value: origin, x-requested-with, content-type
 
 A string that define the header "Access-Control-Allow-Headers". If a function is
 used, it will be called with the request object as the only parameter.
 
-**options.accessControlAllowCredentials** Type: String or function Default
-value: true
+**options.accessControlAllowCredentials**:
+
+Type: String or function Default value: true
 
 A string that define the header "Access-Control-Allow-Credentials". If a
 function is used, it will be called with the request object as the only
 parameter.
 
-**options.middleware** Type: Object Optional
+**options.middleware**:
+
+Type: Object Optional
 
 A object including the middleware functions. Read middleware.md for details.
 
-**options.expressMiddleware** Type: Array<Function<Array<path: string, callback:
-Function>>> Optional
+**options.expressMiddleware**:
+
+Type: Array<Function<Array<path: string, callback: Function>>> Optional
 
 A array of functions that returns the express app.use arguments. Read express
 middleware documentation for details. examples:
@@ -611,21 +652,29 @@ A string that defines the location of the imported response functions.
 
 An agent to reach a swagger url outside a corporate proxy.
 
-**options.customDTOToClassTemplate** Type: String Optional
+**options.customDTOToClassTemplate**:
+
+Type: String Optional
 
 A string that define the path to the custom DTO to class template. template
 
-**options.open** Type: Boolean Optional
+**options.open**:
+
+Type: Boolean Optional
 
 A boolean to decide to open the UI after start or not.
 
-**options.optionsFallbackPath** Type: String Optional
+**options.optionsFallbackPath**:
+
+Type: String Optional
 
 A string that defines and enables the options fallback. This allows you to
 define a fallback for every options call except there is one defined for the
 affected endpoint.
 
-**options.useTrailingSlashes** Type: Boolean Optional
+**options.useTrailingSlashes**:
+
+Type: Boolean Optional
 
 A boolean to decide to use trailing slashes in URL if your endpoints always
 ending with it.

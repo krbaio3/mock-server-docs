@@ -1,3 +1,5 @@
+# Anexo
+
 ## Descartados
 
 ## Nock
@@ -16,13 +18,17 @@ Sólo funciona en el navegador
 
 [mocks-server](https://github.com/mocks-server/main)
 
-Va con plugins
+La configuración está hecha con plugins, y puede llegar al punto de ser
+inconsistente. Los plugins que tiene "oficiales" son de administración (login).
+No aplica para nuestro propósito
 
 ## Drakov
 
 [Drakov](https://github.com/Aconex/drakov)
 
-Sigue el API de [Blue Print](https://apiblueprint.org/)
+Sigue el API de [Blue Print](https://apiblueprint.org/) Parecido a
+[node-mock-server](https://github.com/smollweide/node-mock-server), pero no es
+tan completo. El mantenimiento no parece que sea muy actualizado.
 
 ## wiremock npm
 
@@ -34,4 +40,4 @@ Descontinuado: [wiremock-js](https://github.com/stratouklos/wiremock-js)
 
 [wiremock](https://github.com/tomasbjerre/wiremock-npm)
 
-Wrapper de wiremock para nodejs. Ocupa 13,5Mb. Usa node-jre
+Wrapper de wiremock para nodejs. Ocupa 13,5Mb. Usa node-jre.
