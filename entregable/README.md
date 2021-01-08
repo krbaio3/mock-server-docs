@@ -387,19 +387,19 @@ respuesta que nuestro mock-server usará.
 
 ```json
 <%
-	let data = {};
+ let data = {};
 
-	switch (params.productCode) {
-		case '1':
-			data = response['success-1'];
-			break;
-		case '2':
-			data = response['success-2'];
-			break;
-		default:
-			data = response['success-default'];
-			break;
-	}
+ switch (params.productCode) {
+  case '1':
+   data = response['success-1'];
+   break;
+  case '2':
+   data = response['success-2'];
+   break;
+  default:
+   data = response['success-default'];
+   break;
+ }
 
 %>
 
@@ -435,8 +435,8 @@ En el [index.js](#indexjs), incluir este middleware a modo de ejemplo:
 ```
 
 Para la url: http:[dominio]:[puerto]/[prefix]/[version]/hell0/[param] (como por
-ejemplo, http://localhost:3001/api/v1/hello/jorge?test=pepe), obtenemos el valor
-de `serverOptions` en este [fichero](./serverOptions.md), y la salida de
+ejemplo, <http://localhost:3001/api/v1/hello/jorge?test=pepe>), obtenemos el
+valor de `serverOptions` en este [fichero](./serverOptions.md), y la salida de
 `requestOptions.req` en este otro [fichero](./requestOptions.md). Se han
 separado para no "ensuciar" este documento.
 
@@ -452,232 +452,334 @@ Métodos que tiene `requestOptions`
 
 Métodos que tiene `serverOptions` (opciones que tiene el [index.js](#indexjs))
 
-**options.restPath**:
+**options.restPath**
 
-Type: String
+Tipo: `String`
 
-Default value: './rest'
+Valor predeterminado:`'./rest'`
 
-Un valor de cadena que define la ruta a la carpeta del resto de la API.
+Un valor de cadena que define la ruta a la carpeta de la API rest.
 
-**options.dirName**:
+**options.dirName**
 
-Type: String
+Tipo: `String`
 
-A string value that defines the root directory (\_\_dirname).
+Un valor de cadena que define el directorio raíz (\_\_dirname).
 
-**options.title**:
+**options.title**
 
-Type: String Default value: Api mock server
+Tipo: `String`
 
-A string value that defines the title.
+Valor predeterminado:`Api mock server`
 
-**options.version**:
+Un valor de cadena que define el título.
 
-Type: Number Default value: 1
+**options.version**
 
-A number value that defines the Rest API version.
+Tipo: `Número`
 
-**options.urlBase**:
+Valor predeterminado:`1`
 
-Type: String Default value: http://localhost:3001
+Un valor numérico que define la versión de la API Rest.
 
-A string value that defines the mock Rest API url.
+**options.urlBase**
 
-**options.urlPath**:
+Tipo: `String`
 
-Type: String Default value: /rest/v1
+Valor predeterminado:`http://localhost:3001`
 
-A string value that defines the path for the mock Rest API.
+Un valor de cadena que define la URL de la API de descanso simulada.
 
-**options.port**:
+**options.urlPath**
 
-Type: Number Default value: 3001
+Tipo: `String`
 
-A number value that defines the application port.
+Valor predeterminado:`/rest/v1`
 
-**options.uiPath**:
+Un valor de cadena que define la ruta para la API de Rest simulada.
 
-Type: string Default value: /
+**options.port**
 
-A string value that defines the path for the node-mock-server UI.
+Tipo: `Número`
 
-**options.privateKey**:
+Valor predeterminado:`3001`
 
-Type: String
+Un valor numérico que define el puerto de la aplicación.
 
-A string value that defines the path to the private key for ssl.
+**options.uiPath**
 
-**options.certificate**:
+Tipo: `String`
 
-Type: String
+Valor predeterminado:`/`
 
-A string value that defines the path to the ssl certificate.
+Un valor de cadena que define la ruta de la IU del servidor simulado de nodo.
 
-**options.funcPath**:
+**options.privateKey**
 
-Type: String|Array Optional
+Tipo: `String`
 
-A string or array that define the location of the response functions.
+Un valor de cadena que define la ruta a la clave privada para ssl.
 
-**options.headers**:
+**options.certificate**
 
-Type: Object Default value: {}
+Type: `String`
 
-A object that define the global response headers. Will add the given headers to
-all responses.
+Un valor de cadena que define la ruta al certificado ssl.
 
-**options.contentType**:
+**options.funcPath**
 
-Type: String Default value: application/json
+Tipo: `String | Array`
 
-A string that define the header "Content-Type".
+Opcional
 
-**options.accessControlExposeHeaders**:
+Una cadena o matriz que define la ubicación de las funciones de respuesta.
 
-Type: String or function Default value: X-Total-Count
+**options.headers**
 
-A string that define the header "Access-Control-Expose-Headers". If a function
-is used, it will be called with the request object as the only parameter.
+Tipo: `Object`
 
-**options.accessControlAllowOrigin**:
+Valor predeterminado:`{}`
 
-Type: String or function Default value: \*
+Un objeto que define los encabezados de respuesta global. Agregará los
+encabezados dados a todas las respuestas.
 
-A string that define the header "Access-Control-Allow-Origin". If a function is
-used, it will be called with the request object as the only parameter.
+**options.contentType**
 
-**options.accessControlAllowMethods**:
+Tipo: `String`
 
-Type: String or function Default value: GET, POST, PUT, OPTIONS, DELETE, PATCH,
-HEAD
+Valor predeterminado:`application/json`
 
-A string that define the header "Access-Control-Allow-Methods". If a function is
-used, it will be called with the request object as the only parameter.
+Una cadena que define el encabezado "Content-Type".
 
-**options.accessControlAllowHeaders**:
+**options.accessControlExposeHeaders**
 
-Type: String or function Default value: origin, x-requested-with, content-type
+Tipo: `String` o `function` Valor predeterminado: `X-Total-Count`
 
-A string that define the header "Access-Control-Allow-Headers". If a function is
-used, it will be called with the request object as the only parameter.
+Una cadena que define el encabezado" Access-Control-Expose-Headers ". Si se
+utiliza una función , se llamará con el objeto de solicitud como único
+parámetro.
 
-**options.accessControlAllowCredentials**:
+**options.accessControlAllowOrigin**
 
-Type: String or function Default value: true
+Tipo: `String` o `function`
 
-A string that define the header "Access-Control-Allow-Credentials". If a
-function is used, it will be called with the request object as the only
-parameter.
+Valor predeterminado: `*`
 
-**options.middleware**:
+Una cadena que define el encabezado "Access-Control-Allow-Origin". Si se utiliza
+una función , se llamará con el objeto de solicitud como único parámetro.
 
-Type: Object Optional
+**options.accessControlAllowMethods**
 
-A object including the middleware functions. Read middleware.md for details.
+Tipo: `String` o `function`
 
-**options.expressMiddleware**:
+Valor predeterminado: `GET, POST, PUT, OPTIONS, DELETE, PATCH, HEAD`
 
-Type: Array<Function<Array<path: string, callback: Function>>> Optional
+Una cadena que define el encabezado" Access-Control-Allow-Methods ". Si se
+utiliza una función , se llamará con el objeto de solicitud como único
+parámetro.
 
-A array of functions that returns the express app.use arguments. Read express
-middleware documentation for details. examples:
+**options.accessControlAllowHeaders**
 
-**expressMiddleware**: [ function () { return ['/public',
-express.static('/public')]; } ] expressMiddleware: [ function () { return
-['/public', function (req, res, next) {}]; } ] expressMiddleware: [ function ()
-{ return [function (req, res, next) {}] } ] expressMiddleware: [ function () {
-return function (req, res, next) {}; } ] options.swaggerImport Type: Object
-Optional
+Tipo: `String` o `function`
 
-A object that define the swagger import.
+Valor predeterminado: `origin, x-required-with, content-type`
 
-**options.swaggerImport**.protocol Type: String Default value: http
+Una cadena que define el encabezado" Access-Control-Allow-Headers ". Si una
+función se utiliza, se llamará con el objeto de solicitud como único parámetro.
 
-A string that used to define the protocol for the swagger import curl.
+**options.accessControlAllowCredentials**
 
-**options.swaggerImport**.authUser Type: String Optional
+Tipo: `String` o `function`
 
-A string that define the basic auth user for the swagger import curl.
+Valor predeterminado: `true`
 
-**options.swaggerImport**.authPass Type: String Optional
+Una cadena que define el encabezado" Access-Control-Allow-Credentials ". Si se
+utiliza una función , se llamará con el objeto de solicitud como único
+parámetro.
 
-A string that define the basic auth password for the swagger import curl.
+**options.middleware**
 
-**options.swaggerImport**.host Type: String Required
+Tipo: `Object`
 
-A string that define the host for the swagger import curl.
+Opcional
 
-**options.swaggerImport**.port Type: String Default value: 80
+Un objeto que incluye las funciones de middleware. Lea [middleware.md]
+(#middleware.md) para obtener detalles.
 
-A string that define the port for the swagger import curl.
+**options.expressMiddleware**
 
-**options.swaggerImport**.path Type: String Default value: ''
+Tipo: `Array<Function<Array<path: string, callback: Function>>>`
 
-A string that define the path for the swagger import curl.
+Opcional
 
-**options.swaggerImport**.yaml Type: Boolean Default value: false
+Un array de funciones que devuelve los argumentos de `app.use`. Lea la
+[documentación de middleware express]
+(<http://expressjs.com/en/api.html#app.use>) para obtener más detalles.
+ejemplos:
 
-A flag that toggles whether the swagger file should be treated as a YAML file
-(otherwise: JSON).
+- `expressMiddleware: [function () {return ['/ public', express.static ('/ public')]; }]`
+- `expressMiddleware: [function () {return ['/ public', function (req, res, next) {}]; }]`
+- `expressMiddleware: [function () {return [function (req, res, next) {}]}]` \*`expressMiddleware: [function () {return function (req, res, next) {}; }]`
 
-**options.swaggerImport**.dest Type: String Required
+**options.swaggerImport**
 
-A string that defines the destination path for the swagger import.
+Type:`Object`
 
-**options.swaggerImport**.replacePathsStr Type: String Default value: ``
+Opcional
 
-A string that defines the part of the swagger imported methods path which should
-be removed.
+Un objeto que define la importación swagger.
 
-**options.swaggerImport**.createErrorFile Type: Boolean Default value: true
+**options.swaggerImport.protocol**
 
-A boolean to decide to create an expected response error file or not.
+Tipo: `String`
 
-**options.swaggerImport**.createEmptyFile Type: Boolean Default value: true
+Valor predeterminado:`http`
 
-A boolean to decide to create an expected response empty file or not.
+Una cadena que solía definir el protocolo para el curl de importación swagger.
 
-**options.swaggerImport**.overwriteExistingDescriptions Type: Boolean Default
-value: true
+**options.swaggerImport.authUser**
 
-A boolean to decide to replace an old description with the new (imported)
-description or not.
+Type: `String`
 
-**options.swaggerImport**.responseFuncPath Type: String
+Opcional
 
-A string that defines the location of the imported response functions.
+Una cadena que define el usuario de autenticación básico para el rizo de
+importación swagger.
 
-**options.swaggerImport**.agent Type: HttpProxyAgent|HttpsProxyAgent Optional
+**options.swaggerImport.authPass**
 
-An agent to reach a swagger url outside a corporate proxy.
+Tipo: `String`
 
-**options.customDTOToClassTemplate**:
+Opcional
 
-Type: String Optional
+Una cadena que define la contraseña de autenticación básica para la importación
+de swagger.
 
-A string that define the path to the custom DTO to class template. template
+**options.swaggerImport.host**
 
-**options.open**:
+Tipo: `String`
 
-Type: Boolean Optional
+Requerido
 
-A boolean to decide to open the UI after start or not.
+Una cadena que define el host para la importación swagger.
 
-**options.optionsFallbackPath**:
+**options.swaggerImport.port**
 
-Type: String Optional
+Tipo: `String`
 
-A string that defines and enables the options fallback. This allows you to
-define a fallback for every options call except there is one defined for the
-affected endpoint.
+Valor predeterminado:`80`
 
-**options.useTrailingSlashes**:
+Una cadena que define el puerto para la importación swagger.
 
-Type: Boolean Optional
+**options.swaggerImport.path**
 
-A boolean to decide to use trailing slashes in URL if your endpoints always
-ending with it.
+Tipo: `String`
+
+Valor predeterminado:``
+
+Una cadena que define la ruta para la importación swagger.
+
+**options.swaggerImport.yaml**
+
+Tipo: `Boolean`
+
+Valor predeterminado: `false`
+
+Una marca que alterna si el archivo swagger debe tratarse como un archivo YAML
+(de lo contrario: JSON).
+
+**options.swaggerImport.dest**
+
+Tipo: `String`
+
+Requerido
+
+Una cadena que define la ruta de destino para la importación swagger.
+
+**options.swaggerImport.replacePathsStr**
+
+Tipo: `String`
+
+Valor predeterminado:``
+
+Una cadena que define la parte de la ruta de métodos importados de Swagger que
+debe eliminarse.
+
+**options.swaggerImport.createErrorFile**
+
+Tipo: `Boolean`
+
+Valor predeterminado: `true`
+
+Un booleano para decidir si se crea un archivo de error de respuesta esperada o
+no.
+
+**options.swaggerImport.createEmptyFile**
+
+Tipo: `Boolean`
+
+Valor predeterminado:`true`
+
+Un booleano para decidir si crear un archivo vacío de respuesta esperada o no.
+
+**options.swaggerImport.overwriteExistingDescriptions**
+
+Tipo: `Boolean`
+
+Valor predeterminado:`true`
+
+Un booleano para decidir reemplazar una descripción antigua con la descripción
+nueva (importada) o no.
+
+**options.swaggerImport.responseFuncPath**
+
+Tipo: `String`
+
+Una cadena que define la ubicación de las funciones de respuesta importadas.
+
+**options.swaggerImport.agent**
+
+Tipo: `HttpProxyAgent | HttpsProxyAgent`
+
+Opcional
+
+Un agente para llegar a una URL arrogante fuera de un proxy corporativo.
+
+**options.customDTOToClassTemplate**
+
+Tipo: `String`
+
+Opcional
+
+Una cadena que define la ruta al DTO personalizado a la plantilla de clase.
+[plantilla](https://github.com/smollweide/node-mock-server/blob/master/src/templates/dto_es6flow.ejs)
+
+**options.open**
+
+Tipo: `Boolean`
+
+Opcional
+
+Un booleano para decidir abrir la IU después del inicio o no.
+
+**options.optionsFallbackPath**
+
+Tipo: `String`
+
+Opcional
+
+Una cadena que define y habilita las opciones de respaldo. Esto le permite
+definir una reserva para cada llamada de opciones, excepto que haya una definida
+para el punto final afectado.
+
+**options.useTrailingSlashes**
+
+Tipo: `Boolean`
+
+Opcional
+
+Un valor booleano para decidir usar barras diagonales finales en la URL si sus
+puntos finales siempre terminan con ella.
 
 ### Headers
 
